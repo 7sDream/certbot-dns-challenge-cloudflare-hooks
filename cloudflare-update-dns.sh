@@ -14,7 +14,7 @@ ADD_RECORD_RESULT=$(curl -X POST "https://api.cloudflare.com/client/v4/zones/${C
      -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
      -H "X-Auth-Key: ${CLOUDFLARE_KEY}" \
      -H "Content-Type: application/json" \
-     --data "{\"type\":\"TXT\",\"name\":\"_acme-challenge\",\"content\":\"${CERTBOT_VALIDATION}\", \"ttl\": \"120\"}" -s | jq -r "[.success, .errors[].message] | @csv")
+     --data "{\"type\":\"TXT\",\"name\":\"_acme-challenge\",\"content\":\"${CERTBOT_VALIDATION}\", \"ttl\": 120}" -s | jq -r "[.success, .errors[].message] | @csv")
 
 echo "Add record result: ${ADD_RECORD_RESULT}"
 
